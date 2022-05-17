@@ -133,3 +133,34 @@ calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 const eurToUsdCur=1.1;
 const totalDepositsUSD=movements.filter(mov=>mov>0).map(mov=>mov*1.1).reduce((acc,cur)=>acc+cur,0);
 console.log(totalDepositsUSD);
+
+/* 
+Rewrite the 'calcAverageHumanAge' function from the previous challenge, but this time as an arrow function, and using chaining!
+
+TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
+TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
+
+GOOD LUCK 😀
+*/
+
+const calcAverageHumanAge1=ages=>ages.map(age=>age>2 ? 16+age*4 : age*2).filter(age=>age>18).reduce((acc,cur,_,arr)=>acc+cur/arr.length,0);
+const avg1=calcAverageHumanAge1([5, 2, 4, 1, 15, 8, 3]);
+const avg2=calcAverageHumanAge1([16, 6, 10, 5, 6, 1, 4]);
+console.log(avg1,avg2);
+
+/*1. Write a JavaScript function to check whether an `input` is an array or not. Go to the editor
+Test Data :
+console.log(is_array('w3resource'));
+console.log(is_array([1, 2, 4, 0]));
+false
+true 
+*/
+
+let isArray=function(input){
+    if(toString.call(input)==='[object Array]'){
+        return true;
+    }
+    return false;
+}
+console.log(isArray('w3resource'));
+console.log(isArray([1, 2, 4, 0]));
