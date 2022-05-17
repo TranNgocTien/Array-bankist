@@ -148,7 +148,7 @@ const avg1=calcAverageHumanAge1([5, 2, 4, 1, 15, 8, 3]);
 const avg2=calcAverageHumanAge1([16, 6, 10, 5, 6, 1, 4]);
 console.log(avg1,avg2);
 
-/*1. Write a JavaScript function to check whether an `input` is an array or not. Go to the editor
+/*1. Write a JavaScript function to check whether an `input` is an array or not.
 Test Data :
 console.log(is_array('w3resource'));
 console.log(is_array([1, 2, 4, 0]));
@@ -164,3 +164,102 @@ let isArray=function(input){
 }
 console.log(isArray('w3resource'));
 console.log(isArray([1, 2, 4, 0]));
+
+
+/*
+ Write a JavaScript function to clone an array.
+Test Data :
+console.log(array_Clone([1, 2, 4, 0]));
+console.log(array_Clone([1, 2, [4, 0]]));
+[1, 2, 4, 0]
+[1, 2, [4, 0]]
+*/ 
+
+const array_Clone=arr=>arr.slice();
+
+console.log(array_Clone([1, 2, 4, 0]));
+console.log(array_Clone([1, 2, [4, 0]]));
+
+/*
+3. Write a JavaScript function to get the first element of an array. Passing a parameter 'n' will return the first 'n' elements of the array.
+Test Data :
+console.log(first([7, 9, 0, -2]));
+console.log(first([],3));
+console.log(first([7, 9, 0, -2],3));
+console.log(first([7, 9, 0, -2],6));
+console.log(first([7, 9, 0, -2],-3));
+Expected Output :
+7
+[]
+[7, 9, 0]
+[7, 9, 0, -2]
+[]
+*/
+let first=function(arr,n){
+    if( arr==0)
+        return void 0;
+    else if(n==0){
+        return arr[0];
+    }else if(n<0){
+        return [];
+    }
+    return arr.slice(0,n);
+}
+console.log(first([7, 9, 0, -2]));
+console.log(first([],3));
+console.log(first([7, 9, 0, -2],3));
+console.log(first([7, 9, 0, -2],6));
+console.log(first([7, 9, 0, -2],-3));
+
+
+/*4. Write a JavaScript function to get the last element of an array. Passing a parameter 'n' will return the last 'n' elements of the array. Go to the editor
+Test Data :
+console.log(last([7, 9, 0, -2]));
+console.log(last([7, 9, 0, -2],3));
+console.log(last([7, 9, 0, -2],6));
+Expected Output :
+-2
+[9, 0, -2]
+[7, 9, 0, -2]*/
+
+const last = function(arr,n){
+    return n===null? arr[-1] : arr.slice(-n);
+}
+console.log(last([7, 9, 0, -2]));
+console.log(last([7, 9, 0, -2],3));
+console.log(last([7, 9, 0, -2],6));
+
+/*
+5. Write a simple JavaScript program to join all elements of the following array into a string. Go to the editor
+Sample array : myColor = ["Red", "Green", "White", "Black"];
+Expected Output :
+"Red,Green,White,Black"
+"Red,Green,White,Black"
+"Red+Green+White+Black"
+*/
+const myColor=['Red','Green','White','Black'];
+const joinElement=function(arr){
+    console.log(arr.join(','));
+    console.log(arr.join('+'));
+}
+joinElement(myColor);
+
+
+/*6. Write a JavaScript program which accept a number as input and insert dashes (-) between each two even numbers. For example if you accept 025468 the output should be 0-254-6-8. */
+
+const dashesEven=function(n){
+    const result=[];
+    const number=n.split('');
+    for([i,num] of number.entries()){
+        if(number[i-1]%2==0 && number[i]%2==0){
+            result.push('-',number[i]);
+        }else{
+            result.push(number[i]);
+        }
+    }
+    return result;   
+        
+   
+}
+console.log(dashesEven('025468').join(''));
+console.log(dashesEven('1680924').join(''));
