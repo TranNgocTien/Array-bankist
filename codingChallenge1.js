@@ -448,3 +448,48 @@ const dogs = [
 
 GOOD LUCK 😀
 */
+const dogs = [
+    { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+    { weight: 8, curFood: 200, owners: ['Matilda'] },
+    { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+    { weight: 32, curFood: 340, owners: ['Michael'] }
+  ];
+
+const recommendedFood=function(dogs){
+    for(dog of dogs){
+        dog.recommendedFood=dog.weight**0.75*28;
+    } 
+}
+
+recommendedFood(dogs);
+console.log(dogs);
+
+console.log("Sarah's dog");
+const SarahDogs=dogs.find(dog=>dog.owners.includes('Sarah'));
+console.log(SarahDogs);
+const isSarahDogsEatOk=SarahDogs.curFood>SarahDogs.recommendedFood?"Eating to much":"Eating to little";
+console.log(isSarahDogsEatOk);
+
+const ownersEatTooMuch=dogs.filter(dog=>dog.curFood>dog.recommendedFood).map(dog=>dog.owners);
+console.log(ownersEatTooMuch);
+
+const ownersEatTooLittle=dogs.filter(dog=>dog.curFood<dog.recommendedFood).map(dog=>dog.owners);
+console.log(ownersEatTooLittle);
+
+const strOfOwnersEatTooMuch=`${ownersEatTooMuch.flatMap(owner=>owner).join(' and ')}'s dog is eating too much!`;
+console.log(strOfOwnersEatTooMuch);
+
+const strOfOwnersEatTooLittle=`${ownersEatTooLittle.flatMap(owner=>owner).join(' and ' )}'s dog is eating too little!`;
+console.log(strOfOwnersEatTooLittle);
+
+const isExactlyRecommend =dogs.map(dog=>dog).some(dog=>dog.curFood===dog.recommendedFood);
+console.log(isExactlyRecommend);
+
+const isOkayRecommend = dogs.map(dog=>dog).some(dog=>dog.curFood>(dog.recommendedFood*0.90) && dog.curFood<(dog.recommendedFood*1.10));
+console.log(isOkayRecommend);
+
+const dogsEatingOkay=dogs.map(dog=>dog).filter(dog=>dog.curFood>(dog.recommendedFood*0.90) && dog.curFood<(dog.recommendedFood*1.10));
+console.log(dogsEatingOkay);
+
+const sortRecommendDog=dogs.slice().map(dog=>dog.recommendedFood).sort((a,b)=>a-b);
+console.log(sortRecommendDog);
