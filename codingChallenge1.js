@@ -360,6 +360,67 @@ movements.sort((a,b)=>{
 console.log(movements);
 
 
+
+const x = new Array(7);
+console.log(x);
+
+x.fill(1,3);
+console.log(x);
+
+
+const arr=[1,2,3,4,5,6,7];
+arr.fill(23,4, 6);
+console.log(arr);
+
+
+const y = Array.from({length:7}, ()=>1);
+console.log(y);
+
+const z = Array.from({length:7},(cur,i)=>i+1);
+console.log(z);
+
+
+
+//Array method practice
+//.1
+const bankDepositSum= accounts.flatMap(acc=>acc.movements).filter(deposit=>deposit>0).reduce((acc,cur)=>acc+cur,0);
+console.log(bankDepositSum);
+
+
+//.2
+// const numDeposits1000=accounts.flatMap(acc=>acc.movements).filter(deposit=>deposit>=1000).length;
+
+
+//reduce method
+
+const numDeposits1000=accounts.flatMap(acc=>acc.movements).reduce((count,cur)=>cur>=1000?count+1:count,0);
+
+console.log(numDeposits1000);
+
+
+
+
+//.3
+const sum=accounts.flatMap(acc=>acc.movements).reduce((sum,cur)=>{
+    cur>0?sum.deposits+cur:sum.withdrawals+cur
+    return sum;
+},{deposit:0,withdrawal:0});
+console.log(deposits,withdrawals);
+
+
+
+//.4 this is a nice title -> This Is a Nice Title
+const convertTitleCase=function(title){
+    const exceptions=['a','an','the','but','or','on','and','in','with'];
+    const titleCase=title.toLowerCase().split(' ').map(word=> exceptions.includes(word)?word:word[0].toUpperCase()+word.slice(1)).join(' ');
+    return titleCase;
+};
+
+console.log(convertTitleCase('this is a nice title'));
+console.log(convertTitleCase('this is a LONG title but not too long'));
+console.log(convertTitleCase('and here is another title with an EXAMPLE'));
+
+
 /* 
 Julia and Kate are still studying dogs, and this time they are studying if dogs are eating too much or too little.
 Eating too much means the dog's current food portion is larger than the recommended portion, and eating too little is the opposite.
