@@ -32,3 +32,25 @@ console.log( `${item} ( ${mf} times )`);
 
 
 
+// Write a JavaScript program which accept a string as input and swap the case of each character.
+// For example if you input 'The Quick Brown Fox' the output should be 'tHE qUICK bROWN fOX'.
+
+const Upper=['Q','W','E','R','T','Y','U','I','O','P','A','S','D','F','G','H','J','K','L','Z','X','C','V','B','N','M'];
+const Lower=['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m'];
+const result=[];
+const swapCaseStr=function(str){
+    const arrStr=str.split('');
+    for(const [i,el] of arrStr.entries()){
+        if(Upper.includes(el)){
+            result.push(el.toLowerCase());
+        }
+        if(Lower.includes(el)){
+            result.push(el.toUpperCase());
+        }
+        if(arrStr[i]===' '){
+            result.push(el);
+        }
+    }
+}
+swapCaseStr('The Quick Brown Fox');
+console.log(result.join(''));
